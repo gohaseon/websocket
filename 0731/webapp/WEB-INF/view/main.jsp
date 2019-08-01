@@ -39,6 +39,22 @@
 		<!--//#inputChatBox -->
 		</div>
 <c:import url="/WEB-INF/template/footer.jsp"/>
+<script src="/js/jquery.js"></script>
+<script src="/js/underscore-min.js"></script>
+<script src="/js/moment-with-locales.js"></script>
+<script src="/js/sockjs.min.js"></script>
+<script src="/js/stomp.min.js"></script>
+<script>
+	//handshaking
+	let socket = new SockJS("/chat");
+	
+	//stomp로 업그레이드
+	let stompClient = Stomp.over(socket);
+	
+	stompClient.connect({}, function(){
+		console.log("연결됨");
+	});
+</script>
 </body>
 </html>
     
